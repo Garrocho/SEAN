@@ -6,6 +6,8 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 
+import android.util.Log;
+
 public class Conexao {
 
 	private OutputStream enviaDados;
@@ -17,7 +19,7 @@ public class Conexao {
 
 	public Conexao() {
 		super();
-		this.ENDERECO = "localhost";
+		this.ENDERECO = "10.3.1.85";
 		this.PORTA = 8888;
 	}
 
@@ -27,7 +29,7 @@ public class Conexao {
 		this.PORTA = porta;
 	}
 
-	public Boolean conectaServidor() {
+	public boolean conectaServidor() {
 
 		try {
 			InetAddress endereco = InetAddress.getByName(ENDERECO);
@@ -36,7 +38,7 @@ public class Conexao {
 			recebeDados = soquete.getInputStream();
 			return true;
 		}catch (Exception e) {
-			e.printStackTrace();
+			Log.d("erro", e.toString());
 			return false;
 		}
 	}
