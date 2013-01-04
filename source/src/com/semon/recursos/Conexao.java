@@ -1,29 +1,15 @@
 package com.semon.recursos;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 
 public class Conexao {
 
-	public static void main(String args[]) throws IOException {
-		Conexao conexao = new Conexao();
-		if (conexao.conectaServidor()) {
-			System.out.println("Estabeleceu Conexão");
-			conexao.getEnviaDados().writeObject("LOGAR");
-			conexao.getEnviaDados().flush();
-			conexao.getEnviaDados().writeObject("charles");
-			conexao.getEnviaDados().flush();
-		}
-		else {
-			System.out.println("erro");
-		}
-	}
-
-	private ObjectOutputStream enviaDados;
-	private ObjectInputStream recebeDados;
+	private OutputStream enviaDados;
+	private InputStream recebeDados;
 
 	private Socket soquete;
 	private int PORTA;
@@ -32,7 +18,7 @@ public class Conexao {
 	public Conexao() {
 		super();
 		this.ENDERECO = "localhost";
-		this.PORTA = 8888; 
+		this.PORTA = 8888;
 	}
 
 	public Conexao(String endereco, int porta) {
@@ -46,10 +32,11 @@ public class Conexao {
 		try {
 			InetAddress endereco = InetAddress.getByName(ENDERECO);
 			soquete = new Socket(endereco, PORTA);
-			enviaDados = new ObjectOutputStream(soquete.getOutputStream());
-			recebeDados = new ObjectInputStream(soquete.getInputStream());
+			enviaDados = soquete.getOutputStream();
+			recebeDados = soquete.getInputStream();
 			return true;
 		}catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -60,12 +47,21 @@ public class Conexao {
 		enviaDados.close();
 		soquete.close();
 	}
+	
+	public String byteParaString(InputStream in) throws IOException {
+        StringBuffer out = new StringBuffer();
+        byte[] b = new byte[4096];
+        for (int i; (i = in.read(b)) != -1;) {
+            out.append(new String(b, 0, i));
+        }
+        return out.toString();
+    }
 
-	public ObjectOutputStream getEnviaDados() {
+	public OutputStream getEnviaDados() {
 		return enviaDados;
 	}
 
-	public ObjectInputStream getRecebeDados() {
+	public InputStream getRecebeDados() {
 		return recebeDados;
 	}
 
