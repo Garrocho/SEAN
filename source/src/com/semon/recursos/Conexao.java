@@ -17,7 +17,7 @@ public class Conexao {
 
 	public Conexao() {
 		super();
-		this.ENDERECO = "10.3.1.85";
+		this.ENDERECO = "10.3.1.53";
 		this.PORTA = 8888;
 	}
 

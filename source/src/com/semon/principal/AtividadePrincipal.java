@@ -1,10 +1,11 @@
 package com.semon.principal;
 
-import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 import android.app.Activity;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -44,13 +45,20 @@ public class AtividadePrincipal extends Activity {
 						int count;
 						try {
 							byte[] buffer = new byte[512];
-							FileOutputStream fis = openFileOutput("imagem.jpg", MODE_APPEND);
+							FileOutputStream fis = openFileOutput("imagem.jpg", MODE_WORLD_WRITEABLE);
 							while ((count = conexao.getRecebeDados().read(buffer)) > 0) {
 								fis.write(buffer, 0, count); 
 								fis.flush();  
 							}
 							fis.close();
-							Log.d("sucesso", "sucersso");
+							runOnUiThread(new Runnable() {
+								public void run() {
+									try {
+										getImagemAtual().setImageDrawable(new BitmapDrawable(openFileInput("imagem.jpg")));
+									} catch (FileNotFoundException e) {
+									}
+								}
+							});
 						} catch (Exception e) {
 							Log.d("erro", e.toString());
 						}
@@ -69,5 +77,9 @@ public class AtividadePrincipal extends Activity {
 
 	public void sair(View componente) {
 		finish();
+	}
+
+	public ImageView getImagemAtual() {
+		return imagemAtual;
 	}
 }
