@@ -30,7 +30,8 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/White"
-            android:text="@string/botao_imagem" />
+            android:text="@string/botao_imagem"
+            android:onClick="obterImagemAtual" />
         
          <Button
             android:id="@+id/atividade_principal_botao_sair"
@@ -40,7 +41,8 @@
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/White"
-            android:text="@string/botao_sair" />
+            android:text="@string/botao_sair"
+            android:onClick="sair" />
     </LinearLayout>
 
     <ImageView

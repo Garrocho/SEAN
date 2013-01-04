@@ -70,6 +70,7 @@ public class AtividadeLogin extends Activity {
 		t.start();
 		Intent intent = new Intent("principal");
 		startActivity(intent);
+		finish();
 	}
 
 	public Activity getThis() {
