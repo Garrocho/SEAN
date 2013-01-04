@@ -2,13 +2,15 @@
 
     <string name="app_name">SEMON</string>
     <string name="menu_settings">Settings</string>
-   
     <string name="titulo_atividade_login">Sensor de Monitoramento</string>
-    
+    <string name="titulo_atividade_principal">AtividadePrincipal</string>
     <string name="rotulo_login">Login</string>
     <string name="rotulo_senha">Senha</string>
-    
     <string name="botao_logar">Logar</string>
+    <string name="botao_iniciar">Iniciar</string>
+    <string name="botao_parar">Parar</string>
+    <string name="botao_sair">Sair</string>
+    <string name="botao_imagem">Imagem</string>
     <string name="botao_cancelar">Cancelar</string>
 
 </resources>

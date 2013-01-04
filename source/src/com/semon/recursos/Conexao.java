@@ -6,8 +6,6 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 
-import android.util.Log;
-
 public class Conexao {
 
 	private OutputStream enviaDados;
@@ -38,7 +36,6 @@ public class Conexao {
 			recebeDados = soquete.getInputStream();
 			return true;
 		}catch (Exception e) {
-			Log.d("erro", e.toString());
 			return false;
 		}
 	}
