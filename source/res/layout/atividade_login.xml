@@ -3,54 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <Button
-        android:id="@+id/atividade_login_botao_cancelar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="54dp"
-        android:layout_marginRight="36dp"
-        android:text="@string/botao_cancelar"
-        android:width="115dp"
-        android:onClick="cancelar" />
-
-    <Button
-        android:id="@+id/atividade_login_botao_logar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/atividade_login_botao_cancelar"
-        android:layout_alignBottom="@+id/atividade_login_botao_cancelar"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="21dp"
-        android:text="@string/botao_logar"
-        android:width="115dp"
-        android:onClick="logar" />
-
-    <EditText
-        android:id="@+id/atividade_login_campo_texto_senha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/atividade_login_botao_cancelar"
-        android:layout_alignLeft="@+id/atividade_login_imagem_logo"
-        android:layout_alignRight="@+id/atividade_login_botao_cancelar"
-        android:layout_marginBottom="56dp"
-        android:ems="10"
-        android:inputType="textPassword" >
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
-        android:id="@+id/atividade_login_campo_texto_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/atividade_login_imagem_logo"
-        android:layout_alignRight="@+id/atividade_login_campo_texto_senha"
-        android:layout_centerVertical="true"
-        android:ems="10"
-        android:inputType="text" />
-
     <TextView
         android:id="@+id/atividade_login_rotulo_senha"
         android:layout_width="wrap_content"
@@ -69,6 +21,16 @@
         android:text="@string/rotulo_login"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
+    <EditText
+        android:id="@+id/atividade_login_campo_texto_senha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/atividade_login_campo_texto_login"
+        android:layout_below="@+id/atividade_login_campo_texto_login"
+        android:layout_marginTop="42dp"
+        android:ems="10"
+        android:inputType="textPassword" />
+
     <ImageView
         android:id="@+id/atividade_login_imagem_logo"
         android:layout_width="wrap_content"
@@ -77,5 +39,40 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="38dp"
         android:src="@drawable/logo" />
+
+    <Button
+        android:id="@+id/atividade_login_botao_logar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/atividade_login_botao_cancelar"
+        android:layout_alignBottom="@+id/atividade_login_botao_cancelar"
+        android:layout_toLeftOf="@+id/atividade_login_campo_texto_senha"
+        android:onClick="logar"
+        android:text="@string/botao_logar"
+        android:width="115dp" />
+
+    <EditText
+        android:id="@+id/atividade_login_campo_texto_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/atividade_login_imagem_logo"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="37dp"
+        android:ems="10"
+        android:inputType="text" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/atividade_login_botao_cancelar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/atividade_login_campo_texto_senha"
+        android:layout_below="@+id/atividade_login_campo_texto_senha"
+        android:layout_marginTop="36dp"
+        android:onClick="cancelar"
+        android:text="@string/botao_cancelar"
+        android:width="115dp" />
 
 </RelativeLayout>
