@@ -36,13 +36,16 @@ public class TarefaImagemAtual extends AsyncTask<String, Integer, Integer> {
 	}
 
 	@Override
-	protected Integer doInBackground(String... arg0) {
+	protected Integer doInBackground(String... tamanho) {
 		int codigo = 0;
 
 		try {
 			Conexao conexao = new Conexao();
 			if (conexao.conectaServidor()) {
 				conexao.getEnviaDados().write(IMAGEM.getBytes());
+				conexao.getEnviaDados().flush();
+				
+				conexao.getEnviaDados().write(tamanho[0].getBytes());
 				conexao.getEnviaDados().flush();
 				
 				int count;

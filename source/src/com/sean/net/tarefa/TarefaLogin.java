@@ -12,7 +12,6 @@ import android.util.Log;
 import com.sean.atividade.login.SEAN;
 import com.sean.net.Conexao;
 
-
 public class TarefaLogin extends AsyncTask<String, Integer, Integer> {
 
 	private ProgressDialog progressDialog;
