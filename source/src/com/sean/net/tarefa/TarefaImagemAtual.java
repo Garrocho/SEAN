@@ -32,20 +32,17 @@ public class TarefaImagemAtual extends AsyncTask<String, Integer, Integer> {
 	@Override
 	protected void onProgressUpdate(Integer... values) {
 		super.onProgressUpdate(values);
-		progressDialog.setMessage("Buscando Imagem Atual do SEMON...");
+		progressDialog.setMessage("Solicitando Imagem Atual do SEMON...");
 	}
 
 	@Override
-	protected Integer doInBackground(String... tamanho) {
+	protected Integer doInBackground(String... args) {
 		int codigo = 0;
 
 		try {
 			Conexao conexao = new Conexao();
 			if (conexao.conectaServidor()) {
 				conexao.getEnviaDados().write(IMAGEM.getBytes());
-				conexao.getEnviaDados().flush();
-				
-				conexao.getEnviaDados().write(tamanho[0].getBytes());
 				conexao.getEnviaDados().flush();
 				
 				int count;

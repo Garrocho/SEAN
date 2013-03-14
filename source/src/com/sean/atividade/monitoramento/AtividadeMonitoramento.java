@@ -43,17 +43,12 @@ public class AtividadeMonitoramento extends Atividade {
 	
 	public void obterImagemAtual(View componente) {
 		
-		int width = getWindowManager().getDefaultDisplay().getWidth(); 
-		int height = getWindowManager().getDefaultDisplay().getHeight();
-		
-		String tamanho = width + "==0#_6_#0==" + height;
-
 		ProgressDialog progressDialog = new ProgressDialog(this);
 		progressDialog.setMessage("Conectando ao servidor SEMON...");
 		progressDialog.setCancelable(false);
 		progressDialog.show();
 		TarefaImagemAtual tarefaImagemAtual = new TarefaImagemAtual(this, progressDialog);
-		tarefaImagemAtual.execute(tamanho);
+		tarefaImagemAtual.execute("nada");
 	}
 
 	public Activity getThis() {
