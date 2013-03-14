@@ -1,63 +1,27 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <TextView
-        android:id="@+id/atividade_login_rotulo_senha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/atividade_login_campo_texto_senha"
-        android:layout_alignLeft="@+id/atividade_login_botao_logar"
-        android:text="@string/rotulo_senha"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/atividade_login_rotulo_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/atividade_login_campo_texto_login"
-        android:layout_alignLeft="@+id/atividade_login_rotulo_senha"
-        android:text="@string/rotulo_login"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+    android:layout_height="match_parent"
+     >
 
     <EditText
         android:id="@+id/atividade_login_campo_texto_senha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/atividade_login_campo_texto_login"
+        android:layout_alignRight="@+id/atividade_login_campo_texto_login"
         android:layout_below="@+id/atividade_login_campo_texto_login"
         android:layout_marginTop="42dp"
         android:ems="10"
         android:inputType="textPassword" />
-
-    <ImageView
-        android:id="@+id/atividade_login_imagem_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/atividade_login_campo_texto_login"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="38dp"
-        android:src="@drawable/logo" />
-
-    <Button
-        android:id="@+id/atividade_login_botao_logar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/atividade_login_botao_cancelar"
-        android:layout_alignBottom="@+id/atividade_login_botao_cancelar"
-        android:layout_toLeftOf="@+id/atividade_login_campo_texto_senha"
-        android:onClick="logar"
-        android:text="@string/botao_logar"
-        android:width="115dp" />
 
     <EditText
         android:id="@+id/atividade_login_campo_texto_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/atividade_login_imagem_logo"
+        android:layout_alignRight="@+id/atividade_rotulo_sean"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="37dp"
         android:ems="10"
         android:inputType="text" >
 
@@ -72,7 +36,62 @@
         android:layout_below="@+id/atividade_login_campo_texto_senha"
         android:layout_marginTop="36dp"
         android:onClick="cancelar"
+        android:background="@color/Gray"
+        android:textStyle="bold"
+        android:textColor="@color/White"
         android:text="@string/botao_cancelar"
         android:width="115dp" />
+
+    <Button
+        android:id="@+id/atividade_login_botao_logar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/atividade_login_botao_cancelar"
+        android:layout_alignBottom="@+id/atividade_login_botao_cancelar"
+        android:layout_alignLeft="@+id/atividade_login_rotulo_senha"
+        android:background="@color/Gray"
+        android:onClick="logar"
+        android:text="@string/botao_logar"
+        android:textColor="@color/White"
+        android:textStyle="bold"
+        android:width="115dp" />
+
+    <TextView
+        android:id="@+id/atividade_login_rotulo_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/atividade_login_campo_texto_senha"
+        android:layout_alignLeft="@+id/atividade_rotulo_sean"
+        android:text="@string/rotulo_login"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/atividade_login_rotulo_senha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/atividade_login_campo_texto_senha"
+        android:layout_alignLeft="@+id/atividade_login_rotulo_login"
+        android:text="@string/rotulo_senha"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/atividade_login_imagem_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/atividade_rotulo_sean"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/logo_branco" />
+
+    <TextView
+        android:id="@+id/atividade_rotulo_sean"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/atividade_login_campo_texto_login"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:text="@string/rotulo_descricao_sean"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="italic" />
 
 </RelativeLayout>
