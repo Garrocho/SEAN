@@ -1,9 +1,9 @@
 <resources>
 
-    <string name="app_name">SEMON</string>
+    <string name="app_name">SEAN</string>
     <string name="menu_settings">Settings</string>
-    <string name="titulo_atividade_login">Sensor de Monitoramento</string>
-    <string name="titulo_atividade_principal">Sensor de Monitoramento</string>
+    <string name="titulo_atividade_login">SEAN</string>
+    <string name="titulo_atividade_monitoramento">Sensor de Monitoramento</string>
     <string name="rotulo_login">Login</string>
     <string name="rotulo_senha">Senha</string>
     <string name="botao_logar">Logar</string>
@@ -12,5 +12,7 @@
     <string name="botao_sair">Sair</string>
     <string name="botao_imagem">Imagem</string>
     <string name="botao_cancelar">Cancelar</string>
+    <string name="rotulo_sean">SEAN</string>
+    <string name="rotulo_descricao_sean">Sensor de Monitoramento</string>
 
 </resources>
