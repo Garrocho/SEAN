@@ -1,5 +1,7 @@
 package com.sean.net.tarefa;
 
+import static com.sean.util.Constantes.EXECUTANDO;
+
 import java.io.IOException;
 
 import android.app.ProgressDialog;
@@ -42,13 +44,15 @@ public class TarefaObterStatus extends AsyncTask<String, Integer, Integer> {
 				
 				String resultado = conexao.byteParaString(conexao.getRecebeDados());
 				conexao.desconectaServidor();
-
-				try {
-					codigo = Integer.parseInt(resultado);
-				}catch (Exception e) {
+				
+				if (resultado.equalsIgnoreCase(EXECUTANDO))
+					codigo = 200;
+				else
 					codigo = 300;
-				}
+
 			}
+			else
+				codigo = 400;
 		} catch (IOException e) {
 			codigo = 500;
 		}
@@ -62,7 +66,7 @@ public class TarefaObterStatus extends AsyncTask<String, Integer, Integer> {
 			atividadeMonitoramento.mostrarAlerta("Monitoramento Iniciado");
 			atividadeMonitoramento.getBotaoStatus().setText("Pausar");
 		}
-		else if (codigo == 401) {
+		else if (codigo == 300) {
 			atividadeMonitoramento.mostrarAlerta("Monitoramento Pausado");
 			atividadeMonitoramento.getBotaoStatus().setText("Iniciar");
 		}

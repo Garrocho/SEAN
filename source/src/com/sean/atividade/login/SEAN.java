@@ -1,5 +1,7 @@
 package com.sean.atividade.login;
 
+import java.util.Map;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,11 +13,13 @@ import android.widget.Toast;
 import com.sean.R;
 import com.sean.atividade.Atividade;
 import com.sean.net.tarefa.TarefaLogin;
+import com.sean.util.Preferencia;
 
 public class SEAN extends Atividade {
 
 	private EditText campoTextoLogin;
 	private EditText campoTextoSenha;
+	private Preferencia preferencia;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,12 @@ public class SEAN extends Atividade {
 
 		this.campoTextoLogin = (EditText)findViewById(R.id.atividade_login_campo_texto_login);
 		this.campoTextoSenha = (EditText)findViewById(R.id.atividade_login_campo_texto_senha);
+		
+		preferencia = new Preferencia(this);
+		Map<String, ?> pref = preferencia.getPreferencias();
+		
+		if (!pref.isEmpty() && pref.containsKey("email"))
+			campoTextoLogin.setText((String)pref.get("email"));
 	}
 
 	@Override
@@ -52,6 +62,7 @@ public class SEAN extends Atividade {
 	}
 
 	public void chamaAtividadeMenuInicial() {
+		preferencia.addStringPreferencia("email", getCampoTextoLogin().getText().toString());
 		Intent intent = new Intent("monitoramento");
 		startActivity(intent);
 		finish();

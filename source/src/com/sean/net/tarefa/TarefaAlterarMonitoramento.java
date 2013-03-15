@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.sean.atividade.monitoramento.AtividadeMonitoramento;
 import com.sean.net.Conexao;
@@ -46,6 +47,8 @@ public class TarefaAlterarMonitoramento extends AsyncTask<String, Integer, Integ
 				
 				String resultado = conexao.byteParaString(conexao.getRecebeDados());
 				conexao.desconectaServidor();
+				
+				Log.d("resultado", resultado);
 
 				if (resultado.equalsIgnoreCase(OK_200)) {
 					codigo = 200;

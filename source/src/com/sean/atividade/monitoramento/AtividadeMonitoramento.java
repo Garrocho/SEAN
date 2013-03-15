@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.EditText;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.sean.R;
@@ -22,7 +22,7 @@ import com.sean.net.tarefa.TarefaObterStatus;
 public class AtividadeMonitoramento extends Atividade {
 
 	private ImageView imagemAtual;
-	private EditText botaoStatus;
+	private Button botaoStatus;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -30,8 +30,8 @@ public class AtividadeMonitoramento extends Atividade {
 		setContentView(R.layout.atividade_monitoramento);
 
 		this.imagemAtual = (ImageView)findViewById(R.id.atividade_principal_imagem_atual);
-		this.botaoStatus = (EditText)findViewById(R.id.atividade_principal_botao_status);
-		
+		this.botaoStatus = (Button)findViewById(R.id.atividade_principal_botao_status);
+
 		obterStatusMonitoramento();
 	}
 
@@ -40,7 +40,7 @@ public class AtividadeMonitoramento extends Atividade {
 		getMenuInflater().inflate(R.menu.atividade_principal, menu);
 		return true;
 	}
-	
+
 	@Override
 	protected void onResume() {
 		obterStatusMonitoramento();
@@ -62,33 +62,32 @@ public class AtividadeMonitoramento extends Atividade {
 	}
 
 	public void alterarStatusMonitoramento(View componente) {
+
+		String tipoInicial = botaoStatus.getText().toString();
+
 		ProgressDialog progressDialog = new ProgressDialog(this);
 		progressDialog.setMessage("Conectando ao servidor SEMON...");
 		progressDialog.setCancelable(false);
 		progressDialog.show();
 		
-		String tipoInicial = botaoStatus.getText().toString();
-		obterStatusMonitoramento();
-		String tipoFinal = botaoStatus.getText().toString();
-		
-		if (tipoInicial.equalsIgnoreCase(tipoFinal)) {
-			if (tipoInicial.equalsIgnoreCase("Iniciar"))
-				mostrarAlerta("Ja Esta Iniciado o Monitoramento");
-			else
-				mostrarAlerta("Ja Esta Pausado o Monitoramento");
-		}
-		else if (tipoInicial.equalsIgnoreCase("Iniciar")) {
+		Log.d("tipo", tipoInicial);
+
+		if (tipoInicial.equalsIgnoreCase("Iniciar")) {
 			TarefaAlterarMonitoramento TarefaIniciar;
 			TarefaIniciar = new TarefaAlterarMonitoramento(this, progressDialog, "Iniciando o Monitoramento do SEMON...");
 			TarefaIniciar.execute(INICIAR);
+			mostrarAlerta("Monitoramento Iniciado");
+			botaoStatus.setText("Pausar");
 		}
 		else {
 			TarefaAlterarMonitoramento TarefaPausar;
 			TarefaPausar = new TarefaAlterarMonitoramento(this, progressDialog, "Pausando o Monitoramento do SEMON...");
 			TarefaPausar.execute(PAUSAR);
+			mostrarAlerta("Monitoramento Pausado");
+			botaoStatus.setText("Iniciar");
 		}
 	}
-	
+
 	public void obterImagemAtual(View componente) {
 		ProgressDialog progressDialog = new ProgressDialog(this);
 		progressDialog.setMessage("Conectando ao servidor SEMON...");
@@ -106,7 +105,7 @@ public class AtividadeMonitoramento extends Atividade {
 		return imagemAtual;
 	}
 
-	public EditText getBotaoStatus() {
+	public Button getBotaoStatus() {
 		return botaoStatus;
 	}
 }
