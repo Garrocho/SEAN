@@ -75,8 +75,8 @@ public class TarefaLogin extends AsyncTask<String, Integer, Integer> {
 		else if (codigo == 400)
 			atividadeLogin.mostrarErros("Login Incorreto");
 		else if (codigo == 300)
-			atividadeLogin.mostrarErros("Erro de Acesso");
+			atividadeLogin.mostrarErros("Sem Acesso a Internet");
 		else if (codigo == 500)
-			atividadeLogin.mostrarErros("Erro ao Realizar Conexao");
+			atividadeLogin.mostrarErros("Sem Resposta do Servidor SEMON");
 	}
 }

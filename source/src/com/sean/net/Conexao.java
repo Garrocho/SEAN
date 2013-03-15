@@ -6,8 +6,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
+import static com.sean.util.Constantes.HOST;
+import static com.sean.util.Constantes.PORT;
 
 import org.itadaki.bzip2.BZip2OutputStream;
+
+import android.util.Log;
 
 public class Conexao {
 
@@ -20,8 +24,8 @@ public class Conexao {
 
 	public Conexao() {
 		super();
-		this.ENDERECO = "192.168.10.101";
-		this.PORTA = 7777;
+		this.ENDERECO = HOST;
+		this.PORTA = PORT;
 	}
 
 	public Conexao(String endereco, int porta) {
@@ -39,6 +43,7 @@ public class Conexao {
 			recebeDados = soquete.getInputStream();
 			return true;
 		}catch (Exception e) {
+			Log.d("erro", e.getMessage());
 			return false;
 		}
 	}

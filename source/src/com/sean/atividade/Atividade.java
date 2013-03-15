@@ -3,6 +3,7 @@ package com.sean.atividade;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.widget.Toast;
 
 public class Atividade extends Activity {
 	
@@ -19,5 +20,9 @@ public class Atividade extends Activity {
 		alert.setCancelable(false);
 		alert.show();
 	}
-
+	
+	public void mostrarAlerta(String mensagem) {
+		Toast msg = Toast.makeText(this, mensagem, Toast.LENGTH_SHORT);
+		msg.show();
+	}
 }

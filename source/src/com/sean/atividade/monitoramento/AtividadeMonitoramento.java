@@ -12,10 +12,14 @@ import android.widget.ImageView;
 import com.sean.R;
 import com.sean.atividade.Atividade;
 import com.sean.net.tarefa.TarefaImagemAtual;
+import com.sean.net.tarefa.TarefaAlterarMonitoramento;
+import static com.sean.util.Constantes.INICIAR;
+import static com.sean.util.Constantes.PAUSAR;
 
 public class AtividadeMonitoramento extends Atividade {
 
 	private ImageView imagemAtual;
+	private String statusAtual;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,8 +45,25 @@ public class AtividadeMonitoramento extends Atividade {
 		super.onResume();
 	}
 	
+	public void iniciarMonitoramento(View componente) {
+		ProgressDialog progressDialog = new ProgressDialog(this);
+		progressDialog.setMessage("Conectando ao servidor SEMON...");
+		progressDialog.setCancelable(false);
+		progressDialog.show();
+		TarefaAlterarMonitoramento tarefaAlterarMonitoramento = new TarefaAlterarMonitoramento(this, progressDialog);
+		tarefaAlterarMonitoramento.execute(INICIAR);
+	}
+	
+	public void pausarMonitoramento(View componente) {
+		ProgressDialog progressDialog = new ProgressDialog(this);
+		progressDialog.setMessage("Conectando ao servidor SEMON...");
+		progressDialog.setCancelable(false);
+		progressDialog.show();
+		TarefaAlterarMonitoramento tarefaAlterarMonitoramento = new TarefaAlterarMonitoramento(this, progressDialog);
+		tarefaAlterarMonitoramento.execute(PAUSAR);
+	}
+	
 	public void obterImagemAtual(View componente) {
-		
 		ProgressDialog progressDialog = new ProgressDialog(this);
 		progressDialog.setMessage("Conectando ao servidor SEMON...");
 		progressDialog.setCancelable(false);

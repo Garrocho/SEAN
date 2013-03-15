@@ -20,6 +20,7 @@
             android:layout_weight="1"
             android:textStyle="bold"
             android:textColor="@color/White"
+            android:onClick="iniciarMonitoramento"
             android:text="@string/botao_iniciar" />
 
         <Button

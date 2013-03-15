@@ -2,6 +2,10 @@ package com.sean.util;
 
 public class Constantes {
 	
+	// Host e Porta SEMON
+	public static String HOST = "192.168.10.100";
+	public static int PORT = 7777;
+	
 	// codigos de requisicao
 	public static String STATUS = "STATUS";
 	public static String LOGAR = "LOGAR_";
