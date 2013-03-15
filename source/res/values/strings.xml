@@ -7,7 +7,7 @@
     <string name="rotulo_login">Login</string>
     <string name="rotulo_senha">Senha</string>
     <string name="botao_logar">Logar</string>
-    <string name="botao_iniciar">Iniciar</string>
+    <string name="botao_status">Nenhum</string>
     <string name="botao_parar">Parar</string>
     <string name="botao_sair">Sair</string>
     <string name="botao_imagem">Imagem</string>

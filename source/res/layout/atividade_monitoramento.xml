@@ -14,14 +14,14 @@
         android:background="@color/Black" >
 
         <Button
-            android:id="@+id/atividade_principal_botao_iniciar"
+            android:id="@+id/atividade_principal_botao_status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textStyle="bold"
             android:textColor="@color/White"
-            android:onClick="iniciarMonitoramento"
-            android:text="@string/botao_iniciar" />
+            android:onClick="obterStatusMonitoramento"
+            android:text="@string/botao_status" />
 
         <Button
             android:id="@+id/atividade_principal_botao_imagem"

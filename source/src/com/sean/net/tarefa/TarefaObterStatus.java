@@ -1,7 +1,5 @@
 package com.sean.net.tarefa;
 
-import static com.sean.util.Constantes.OK_200;
-
 import java.io.IOException;
 
 import android.app.ProgressDialog;
@@ -45,11 +43,11 @@ public class TarefaObterStatus extends AsyncTask<String, Integer, Integer> {
 				String resultado = conexao.byteParaString(conexao.getRecebeDados());
 				conexao.desconectaServidor();
 
-				if (resultado.equalsIgnoreCase(OK_200)) {
-					codigo = 200;
+				try {
+					codigo = Integer.parseInt(resultado);
+				}catch (Exception e) {
+					codigo = 300;
 				}
-				else
-					codigo = 400;
 			}
 		} catch (IOException e) {
 			codigo = 500;
@@ -60,8 +58,14 @@ public class TarefaObterStatus extends AsyncTask<String, Integer, Integer> {
 	@Override
 	protected void onPostExecute(Integer codigo) {
 		progressDialog.dismiss();
-		if(codigo == 200)
+		if(codigo == 200) {
 			atividadeMonitoramento.mostrarAlerta("Monitoramento Iniciado");
+			atividadeMonitoramento.getBotaoStatus().setText("Pausar");
+		}
+		else if (codigo == 401) {
+			atividadeMonitoramento.mostrarAlerta("Monitoramento Pausado");
+			atividadeMonitoramento.getBotaoStatus().setText("Iniciar");
+		}
 		else if (codigo == 400)
 			atividadeMonitoramento.mostrarErros("Impossível Iniciar o Monitoramento");
 		else if (codigo == 500)

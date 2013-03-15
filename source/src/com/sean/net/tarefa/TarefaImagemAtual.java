@@ -1,7 +1,5 @@
 package com.sean.net.tarefa;
 
-import static com.sean.util.Constantes.IMAGEM;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -42,7 +40,7 @@ public class TarefaImagemAtual extends AsyncTask<String, Integer, Integer> {
 		try {
 			Conexao conexao = new Conexao();
 			if (conexao.conectaServidor()) {
-				conexao.getEnviaDados().write(IMAGEM.getBytes());
+				conexao.getEnviaDados().write(args[0].getBytes());
 				conexao.getEnviaDados().flush();
 				
 				int count;
