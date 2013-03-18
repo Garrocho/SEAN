@@ -32,12 +32,18 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        
         <activity
             android:name="com.sean.atividade.listagem.AtividadeListagem"
-            android:label="@string/title_activity_atividade_listagem" >
+            android:label="@string/titulo_atividade_listagem" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.sean.atividade.monitoramento.AtividadeMonitoramento" />
+            
+            <intent-filter>
+                <action android:name="listagem" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 
