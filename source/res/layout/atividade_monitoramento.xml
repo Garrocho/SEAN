@@ -5,12 +5,13 @@
     android:background="@color/Black" >
 
     <LinearLayout
-        android:id="@+id/atividade_principal_barra_botoes"
+        android:id="@+id/atividade_principal_barra_botoes_top"
         style="@android:style/ButtonBar"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/atividade_principal_imagem_atual"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:background="@color/Black"
         android:orientation="horizontal" >
 
@@ -33,29 +34,52 @@
             android:textColor="@color/White"
             android:text="@string/botao_imagem"
             android:onClick="obterImagemAtual" />
-        
-         <Button
-            android:id="@+id/atividade_principal_botao_sair"
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/atividade_principal_barra_botoes_bot"
+        style="@android:style/ButtonBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/Black"
+        android:orientation="horizontal" >
+
+		<Button
+            android:id="@+id/atividade_principal_botao_galeria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textStyle="bold"
             android:textColor="@color/White"
+            android:text="@string/botao_galeria"
+            android:onClick="chamaAtividadeListagem" />
+
+        <Button
+            android:id="@+id/atividade_principal_botao_sair"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="sair"
             android:text="@string/botao_sair"
-            android:onClick="sair" />
+            android:textColor="@color/White"
+            android:textStyle="bold" />
+         
     </LinearLayout>
 
     <ImageView
         android:id="@+id/atividade_principal_imagem_atual"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/atividade_principal_barra_botoes"
-        android:layout_alignParentRight="true"
+        android:layout_above="@+id/atividade_principal_barra_botoes_bot"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_alignParentTop="true" />
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/atividade_principal_barra_botoes_top"
+        android:onClick="salvarImagem" />
 
 </RelativeLayout>

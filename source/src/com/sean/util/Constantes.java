@@ -3,7 +3,7 @@ package com.sean.util;
 public class Constantes {
 	
 	// Host (Ip do Servidor), PORTA (Porta do Servidor)
-	public static String HOST = "192.168.10.100";
+	public static String HOST = "192.168.10.102";
 	public static int PORT = 7777;
 
 	// Tipo de Mensagem de Status do Monitoramento. Nao alterar.

@@ -1,44 +1,39 @@
 package com.sean.util;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.graphics.BitmapFactory;
-import android.os.Environment;
+import android.app.Activity;
+import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 public class Arquivo {
 
-	public String gravaImagem(InputStream inPut, String url, String image_name) {
-		File SDCardRoot = Environment.getExternalStorageDirectory().getAbsoluteFile();
-		File file = new File(SDCardRoot, image_name);
+	public static void gravaImagem(Context contexto, InputStream inPut, String nomeArquivo) {
+		int count;
 		try {
-			if(file.createNewFile())
-				file.createNewFile();
-			FileOutputStream fileOutput = new FileOutputStream(file);
-			Bitmap bm = BitmapFactory.decodeStream(inPut); 
-			bm.compress(CompressFormat.PNG, 100, fileOutput); 
-			fileOutput.flush(); 
-			fileOutput.close();
-			//bm = BitmapFactory.decodeFile(filepath+image_name);
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-			Log.i("Hub", "FileNotFoundException: "+ e.toString());
-
-		} catch (IOException e) {
-			e.printStackTrace();
-			Log.i("Hub", "IOException: "+ e.toString());
+			byte[] buffer = new byte[512];
+			FileOutputStream fis = contexto.openFileOutput(nomeArquivo, Activity.MODE_PRIVATE);
+			
+			while ((count = inPut.read(buffer)) > 0) {
+				fis.write(buffer, 0, count);
+				fis.flush();  
+			}
+			fis.close();
+		}catch (Exception e) {
+			Log.d("erro", e.toString());
 		}
-		return file.getAbsolutePath();
 	}
 	
-	public Bitmap carregaImagem(String path) {
-		return BitmapFactory.decodeFile(path);
+	public static Drawable carregaImagem(Context contexto, String nomeArquivo) {
+		try {
+			return new BitmapDrawable(contexto.openFileInput(nomeArquivo));
+		} catch (FileNotFoundException e) {
+			Log.d("erro", e.toString());
+		}
+		return null;
 	}
 }

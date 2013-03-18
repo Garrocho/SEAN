@@ -21,10 +21,4 @@
 	    android:textStyle="italic"
 	    android:text="@string/rotulo_inoformacoes" />
     
-    <ImageView
-	    android:id="@+id/atividade_listagem_imagem"
-	    android:layout_width="fill_parent"
-	    android:layout_height="fill_parent"
-	    android:contentDescription="@string/picture" />
-
 </RelativeLayout>

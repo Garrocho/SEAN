@@ -1,12 +1,12 @@
 package com.sean.net.tarefa;
 
-import java.io.FileOutputStream;
+import static com.sean.util.Arquivo.carregaImagem;
+import static com.sean.util.Arquivo.gravaImagem;
+
 import java.io.IOException;
 
 import android.app.ProgressDialog;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.sean.atividade.monitoramento.AtividadeMonitoramento;
 import com.sean.net.Conexao;
@@ -42,19 +42,7 @@ public class TarefaImagemAtual extends AsyncTask<String, Integer, Integer> {
 			if (conexao.conectaServidor()) {
 				conexao.getEnviaDados().write(args[0].getBytes());
 				conexao.getEnviaDados().flush();
-				
-				int count;
-				try {
-					byte[] buffer = new byte[512];
-					FileOutputStream fis = atividadeMonitoramento.openFileOutput("imagem.jpg", atividadeMonitoramento.MODE_WORLD_WRITEABLE);
-					while ((count = conexao.getRecebeDados().read(buffer)) > 0) {
-						fis.write(buffer, 0, count); 
-						fis.flush();  
-					}
-					fis.close();
-				}catch (Exception e) {
-					Log.d("erro", e.toString());
-				}
+				gravaImagem(atividadeMonitoramento, conexao.getRecebeDados(), "teste.png");
 				codigo = 200;
 			}
 		} catch (IOException e) {
@@ -66,13 +54,8 @@ public class TarefaImagemAtual extends AsyncTask<String, Integer, Integer> {
 	@Override
 	protected void onPostExecute(Integer codigo) {
 		progressDialog.dismiss();
-		if(codigo == 200) {
-			try {
-				atividadeMonitoramento.getImagemAtual().setImageDrawable(new BitmapDrawable(atividadeMonitoramento.openFileInput("imagem.jpg")));
-			} catch (Exception e) {
-				Log.d("erro", e.toString());
-			}
-		}
+		if(codigo == 200)
+			atividadeMonitoramento.getImagemAtual().setImageDrawable(carregaImagem(atividadeMonitoramento, "teste.png"));
 		else if (codigo == 500)
 			atividadeMonitoramento.mostrarErros("Erro ao Realizar Conexao");
 	}

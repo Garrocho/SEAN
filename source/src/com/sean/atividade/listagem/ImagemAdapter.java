@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Gallery;
 import android.widget.ImageView;
+import static com.sean.util.Arquivo.carregaImagem;
 
 import com.sean.R;
 
 public class ImagemAdapter extends BaseAdapter {
 	
-	int defaultItemBackground;
 	private Context contexto;
 	private Bitmap[] imagens;
 	Bitmap placeholder;
@@ -41,7 +41,7 @@ public class ImagemAdapter extends BaseAdapter {
 	    imageView.setImageBitmap(imagens[posicao]);
 	    imageView.setLayoutParams(new Gallery.LayoutParams(300, 200));
 	    imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-	    imageView.setBackgroundResource(defaultItemBackground);
+	    imageView.setImageDrawable(carregaImagem(contexto, "teste.png"));
 	    return imageView;
 	}
 }

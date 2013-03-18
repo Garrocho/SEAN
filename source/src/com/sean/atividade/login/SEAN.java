@@ -34,6 +34,9 @@ public class SEAN extends Atividade {
 		
 		if (!pref.isEmpty() && pref.containsKey("email"))
 			campoTextoLogin.setText((String)pref.get("email"));
+		
+		if (!pref.isEmpty() && pref.containsKey("senha"))
+			campoTextoSenha.setText((String)pref.get("senha"));
 	}
 
 	@Override
@@ -63,6 +66,7 @@ public class SEAN extends Atividade {
 
 	public void chamaAtividadeMenuInicial() {
 		preferencia.addStringPreferencia("email", getCampoTextoLogin().getText().toString());
+		preferencia.addStringPreferencia("senha", getCampoTextoSenha().getText().toString());
 		Intent intent = new Intent("monitoramento");
 		startActivity(intent);
 		finish();

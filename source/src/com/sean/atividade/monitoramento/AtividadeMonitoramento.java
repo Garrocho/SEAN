@@ -5,10 +5,10 @@ import static com.sean.util.Constantes.INICIAR;
 import static com.sean.util.Constantes.PAUSAR;
 import static com.sean.util.Constantes.STATUS;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -34,11 +34,15 @@ public class AtividadeMonitoramento extends Atividade {
 
 		obterStatusMonitoramento();
 	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.atividade_principal, menu);
-		return true;
+	
+	public void chamaAtividadeListagem(View componente) {
+		Intent intent = new Intent("listagem");
+		startActivity(intent);
+		finish();
+	}
+	
+	public void salvarImagem(View componente) {
+		Log.d("entrtei", "entrei");
 	}
 
 	@Override
@@ -70,8 +74,6 @@ public class AtividadeMonitoramento extends Atividade {
 		progressDialog.setCancelable(false);
 		progressDialog.show();
 		
-		Log.d("tipo", tipoInicial);
-
 		if (tipoInicial.equalsIgnoreCase("Iniciar")) {
 			TarefaAlterarMonitoramento TarefaIniciar;
 			TarefaIniciar = new TarefaAlterarMonitoramento(this, progressDialog, "Iniciando o Monitoramento do SEMON...");

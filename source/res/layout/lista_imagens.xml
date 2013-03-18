@@ -6,11 +6,4 @@
     android:paddingBottom="10dp"
     android:paddingTop="10dp" >
 
-    <ImageSwitcher
-        android:id="@+id/imageSwitcher1"
-        android:layout_width="wrap_content"
-        android:layout_height="578dp"
-        android:layout_weight="1.02" >
-    </ImageSwitcher>
-
 </LinearLayout>
