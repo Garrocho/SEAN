@@ -4,6 +4,15 @@ public class Imagem {
 
 	private String endImagem;
 	
+	public Imagem() {
+		super();
+	}
+	
+	public Imagem(String endImagem) {
+		super();
+		this.endImagem = endImagem;
+	}
+
 	public String getEndImagem() {
 		return endImagem;
 	}

@@ -13,15 +13,16 @@ import android.widget.ImageView;
 import static com.sean.util.Arquivo.carregaDrawable;
 
 import com.sean.R;
+import com.sean.classe.Imagem;
 
 public class ImagemAdapter extends BaseAdapter {
 	
 	private Context contexto;
 	private Bitmap[] imagens;
-	private List<String> endImagens;
+	private List<Imagem> endImagens;
 	Bitmap placeholder;
 	
-	public ImagemAdapter(Context contexto, List<String> endImagens) {
+	public ImagemAdapter(Context contexto, List<Imagem> endImagens) {
 	    this.contexto = contexto;
 	    imagens  = new Bitmap[endImagens.size()];
 	    this.endImagens = endImagens;
@@ -45,7 +46,7 @@ public class ImagemAdapter extends BaseAdapter {
 	    imageView.setImageBitmap(imagens[posicao]);
 	    imageView.setLayoutParams(new Gallery.LayoutParams(300, 200));
 	    imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-	    imageView.setImageDrawable(carregaDrawable(contexto, endImagens.get(posicao)));
+	    imageView.setImageDrawable(carregaDrawable(contexto, endImagens.get(posicao).getEndImagem()));
 	    return imageView;
 	}
 }

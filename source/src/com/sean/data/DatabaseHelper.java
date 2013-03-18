@@ -12,7 +12,7 @@ public class DatabaseHelper {
 	private static DatabaseHelper banco;
 
 	private static final String[] DATABASE_TABLES = {
-		"imagens",
+		"imagem",
 	};
 
 	private static final String[] DATABASE_TABELAS_REMOVIDAS = {
@@ -20,8 +20,8 @@ public class DatabaseHelper {
 	};
 
 	private static final String[] DATABASE_CREATE = new String[]{
-	"CREATE TABLE IF NOT EXISTS imagens (" +
-		"email VARCHAR(50) PRIMARY KEY, " +
+	"CREATE TABLE IF NOT EXISTS imagem (" +
+		"endImagem VARCHAR(100) PRIMARY KEY, " +
 	");"
 	};
 

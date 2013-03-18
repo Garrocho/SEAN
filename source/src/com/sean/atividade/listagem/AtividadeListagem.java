@@ -1,19 +1,17 @@
 package com.sean.atividade.listagem;
 
-import java.util.List;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Gallery;
 
 import com.sean.R;
 import com.sean.atividade.Atividade;
+import com.sean.data.repositorio.RepositorioImagem;
 
 public class AtividadeListagem extends Atividade {
 	
 	private Gallery galeria;
-	private List<String> endImagens;
 	private ImagemAdapter imagemAdapter;
+	private RepositorioImagem repoImagem;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,14 +20,13 @@ public class AtividadeListagem extends Atividade {
 		setContentView(R.layout.atividade_listagem);
 		this.galeria = (Gallery) findViewById(R.id.atividade_listagem_galeria);
 		
-		Intent intent = getIntent();
-		this.endImagens = intent.getStringArrayListExtra("teste");
+		this.repoImagem = new RepositorioImagem(this);
 	}
 	
 	@Override
 	protected void onStart() {
-
-		this.imagemAdapter = new ImagemAdapter(this, endImagens);
+		
+		this.imagemAdapter = new ImagemAdapter(this, repoImagem.listarImagens());
 		galeria.setAdapter(imagemAdapter);
 		super.onStart();
 	}
