@@ -9,6 +9,7 @@
         android:targetSdkVersion="15" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -19,16 +20,15 @@
             android:label="@string/titulo_atividade_login" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
         <activity
             android:name="com.sean.atividade.monitoramento.AtividadeMonitoramento"
             android:label="@string/titulo_atividade_monitoramento" >
             <intent-filter>
                 <action android:name="monitoramento" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
@@ -36,9 +36,6 @@
         <activity
             android:name="com.sean.atividade.listagem.AtividadeListagem"
             android:label="@string/titulo_atividade_listagem" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.sean.atividade.monitoramento.AtividadeMonitoramento" />
             
             <intent-filter>
                 <action android:name="listagem" />

@@ -1,9 +1,20 @@
 package com.sean.atividade.monitoramento;
 
+import static com.sean.util.Arquivo.carregaInputStream;
+import static com.sean.util.Arquivo.gravaImagemAtual;
 import static com.sean.util.Constantes.IMAGEM;
+import static com.sean.util.Constantes.IMAGEM_ATUAL;
 import static com.sean.util.Constantes.INICIAR;
 import static com.sean.util.Constantes.PAUSAR;
 import static com.sean.util.Constantes.STATUS;
+import static com.sean.util.Data.DateToString;
+import static com.sean.util.Data.getDataAtual;
+import static com.sean.util.Data.getHoraAtual;
+
+import java.io.FileInputStream;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
@@ -23,6 +34,7 @@ public class AtividadeMonitoramento extends Atividade {
 
 	private ImageView imagemAtual;
 	private Button botaoStatus;
+	private List<String> endImagens = new ArrayList<String>();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -34,15 +46,18 @@ public class AtividadeMonitoramento extends Atividade {
 
 		obterStatusMonitoramento();
 	}
-	
+
 	public void chamaAtividadeListagem(View componente) {
 		Intent intent = new Intent("listagem");
+		intent.putStringArrayListExtra("teste", (ArrayList<String>) endImagens);
 		startActivity(intent);
-		finish();
 	}
-	
+
 	public void salvarImagem(View componente) {
-		Log.d("entrtei", "entrei");
+		String dataAtual = DateToString(getDataAtual()) + getHoraAtual("-");
+		FileInputStream imagemAtual = carregaInputStream(this, IMAGEM_ATUAL);
+		gravaImagemAtual(this, imagemAtual, dataAtual);
+		endImagens.add(dataAtual);
 	}
 
 	@Override
@@ -98,11 +113,16 @@ public class AtividadeMonitoramento extends Atividade {
 		TarefaImagemAtual tarefaImagemAtual = new TarefaImagemAtual(this, progressDialog);
 		tarefaImagemAtual.execute(IMAGEM);
 	}
-
-	public void sair(View componente) {
-		finish();
+	
+	@Override
+	public void onBackPressed() {
+		verificaSaida("Deseja Sair do SEAN?");
 	}
-
+	
+	public void sair(View componente) {
+		verificaSaida("Deseja Sair do SEAN?");
+	}
+	
 	public ImageView getImagemAtual() {
 		return imagemAtual;
 	}

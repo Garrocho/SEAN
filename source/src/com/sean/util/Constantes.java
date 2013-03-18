@@ -22,4 +22,6 @@ public class Constantes {
 	// Tipos de Respostas do Servidor. Nao alterar.
 	public static String OK_200 = "OK_200";
 	public static String NAO_AUTORIZADO_401 = "NO_401";
+	
+	public static String IMAGEM_ATUAL = "imagemAtual.png";
 }

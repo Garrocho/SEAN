@@ -21,8 +21,26 @@ public class Atividade extends Activity {
 		alert.show();
 	}
 	
+	public void verificaSaida(String mensagem) {
+		new AlertDialog.Builder(this)
+		.setIcon(android.R.drawable.ic_dialog_alert)
+		.setTitle("Confirmacao")
+		.setMessage(mensagem)
+		.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int which) {
+				getThis().finish();
+			}
+		})
+		.setNegativeButton("Nao", null)
+		.show();
+	}
+	
 	public void mostrarAlerta(String mensagem) {
 		Toast msg = Toast.makeText(this, mensagem, Toast.LENGTH_SHORT);
 		msg.show();
+	}
+	
+	public Activity getThis() {
+		return this;
 	}
 }

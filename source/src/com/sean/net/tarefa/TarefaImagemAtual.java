@@ -1,7 +1,7 @@
 package com.sean.net.tarefa;
 
-import static com.sean.util.Arquivo.carregaImagem;
-import static com.sean.util.Arquivo.gravaImagem;
+import static com.sean.util.Arquivo.*;
+import static com.sean.util.Constantes.IMAGEM_ATUAL;
 
 import java.io.IOException;
 
@@ -42,7 +42,7 @@ public class TarefaImagemAtual extends AsyncTask<String, Integer, Integer> {
 			if (conexao.conectaServidor()) {
 				conexao.getEnviaDados().write(args[0].getBytes());
 				conexao.getEnviaDados().flush();
-				gravaImagem(atividadeMonitoramento, conexao.getRecebeDados(), "teste.png");
+				gravaImagem(atividadeMonitoramento, conexao.getRecebeDados(), IMAGEM_ATUAL);
 				codigo = 200;
 			}
 		} catch (IOException e) {
@@ -55,7 +55,7 @@ public class TarefaImagemAtual extends AsyncTask<String, Integer, Integer> {
 	protected void onPostExecute(Integer codigo) {
 		progressDialog.dismiss();
 		if(codigo == 200)
-			atividadeMonitoramento.getImagemAtual().setImageDrawable(carregaImagem(atividadeMonitoramento, "teste.png"));
+			atividadeMonitoramento.getImagemAtual().setImageDrawable(carregaDrawable(atividadeMonitoramento, "imagemAtual.png"));
 		else if (codigo == 500)
 			atividadeMonitoramento.mostrarErros("Erro ao Realizar Conexao");
 	}
