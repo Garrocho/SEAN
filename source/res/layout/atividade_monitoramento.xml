@@ -8,11 +8,11 @@
         android:id="@+id/atividade_principal_barra_botoes"
         style="@android:style/ButtonBar"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="@+id/atividade_principal_imagem_atual"
+        android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:background="@color/Black" >
+        android:layout_alignRight="@+id/atividade_principal_imagem_atual"
+        android:background="@color/Black"
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/atividade_principal_botao_status"
