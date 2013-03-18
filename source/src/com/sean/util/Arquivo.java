@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
@@ -15,7 +14,7 @@ import android.util.Log;
 
 public class Arquivo {
 
-	public String gravaArquivo(InputStream inPut, String url, String image_name) {
+	public String gravaImagem(InputStream inPut, String url, String image_name) {
 		File SDCardRoot = Environment.getExternalStorageDirectory().getAbsoluteFile();
 		File file = new File(SDCardRoot, image_name);
 		try {
@@ -37,5 +36,9 @@ public class Arquivo {
 			Log.i("Hub", "IOException: "+ e.toString());
 		}
 		return file.getAbsolutePath();
+	}
+	
+	public Bitmap carregaImagem(String path) {
+		return BitmapFactory.decodeFile(path);
 	}
 }
