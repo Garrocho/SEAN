@@ -34,7 +34,7 @@
         </activity>
         
         <activity
-            android:name="com.sean.atividade.listagem.AtividadeListagem"
+            android:name="com.sean.atividade.galeria.AtividadeGaleria"
             android:label="@string/titulo_atividade_listagem" >
             
             <intent-filter>

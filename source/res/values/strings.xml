@@ -16,9 +16,9 @@
     <string name="botao_cancelar">Cancelar</string>
     <string name="rotulo_sean">SEAN</string>
     <string name="rotulo_descricao_sean">Sensor de Monitoramento</string>
-    <string name="titulo_atividade_listagem">Listagem de Imagens</string>
+    <string name="titulo_atividade_listagem">Galeria de Imagens</string>
     <string name="action_settings">Settings</string>
-    <string name="rotulo_inoformacoes">Informações do Produto</string>
+    <string name="rotulo_informacoes_produto">Informações do Produto</string>
     <string name="picture">Imagem</string>
 
 </resources>
