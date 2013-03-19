@@ -34,7 +34,7 @@ public class ImagemAdapter extends BaseAdapter {
 	public int getCount() {
 	    return imagens.length;
 	}
-	
+
 	public Object getItem(int posicao) {
 	    return posicao;
 	}
