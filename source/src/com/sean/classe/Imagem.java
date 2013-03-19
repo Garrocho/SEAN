@@ -22,7 +22,7 @@ public class Imagem {
 	}
 
 	public static final class Imagens {
-		public static final String END_IMAGEM = "codcidade";
+		public static final String END_IMAGEM = "endImagem";
 		public static final String[] COLUNAS = {END_IMAGEM};
 	}
 }

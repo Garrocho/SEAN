@@ -8,7 +8,7 @@ public class DatabaseHelper {
 	private SQLiteDatabase db;
 
 	private static final String NOME_BANCO = "sean";
-	private static final int VERSAO = 0;
+	private static final int VERSAO = 1;
 	private static DatabaseHelper banco;
 
 	private static final String[] DATABASE_TABLES = {
@@ -21,7 +21,7 @@ public class DatabaseHelper {
 
 	private static final String[] DATABASE_CREATE = new String[]{
 	"CREATE TABLE IF NOT EXISTS imagem (" +
-		"endImagem VARCHAR(100) PRIMARY KEY, " +
+		"endImagem VARCHAR(100) PRIMARY KEY " +
 	");"
 	};
 

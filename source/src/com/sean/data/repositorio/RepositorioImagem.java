@@ -10,6 +10,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.sean.classe.Imagem;
 import com.sean.classe.Imagem.Imagens;
@@ -31,8 +32,15 @@ public class RepositorioImagem implements IRepositorio<Imagem> {
 		return valores;
 	}
 
-	public long insert(Imagem cidade){
-		ContentValues valores = createContentValues(cidade);
+	public long insert(Imagem imagem){
+		ContentValues valores = createContentValues(imagem);
+		if (valores == null)
+			Log.d("valores", "nullo");
+		
+		Log.d("imagem", imagem.getEndImagem());
+		
+		if (db == null)
+			Log.d("db", "nullo");
 
 		return db.insert(NOME_TABELA, "", valores);
 	}

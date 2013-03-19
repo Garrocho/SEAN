@@ -5,6 +5,7 @@ import java.util.Map;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import com.sean.R;
 import com.sean.atividade.Atividade;
+import com.sean.data.DatabaseHelper;
 import com.sean.net.tarefa.TarefaLogin;
 import com.sean.util.Preferencia;
 
@@ -71,7 +73,7 @@ public class SEAN extends Atividade {
 		startActivity(intent);
 		finish();
 	}
-
+	
 	public void cancelar(View componente) {
 		finish();
 	}

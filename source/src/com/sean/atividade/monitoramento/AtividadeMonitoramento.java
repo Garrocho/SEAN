@@ -17,6 +17,7 @@ import java.io.FileInputStream;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -55,6 +56,7 @@ public class AtividadeMonitoramento extends Atividade {
 		String dataAtual = DateToString(getDataAtual()) + getHoraAtual("-");
 		FileInputStream imagemAtual = carregaInputStream(this, IMAGEM_ATUAL);
 		gravaImagemAtual(this, imagemAtual, dataAtual);
+		Log.d("data", dataAtual);
 		repoImagem.insert(new Imagem(dataAtual));
 	}
 
